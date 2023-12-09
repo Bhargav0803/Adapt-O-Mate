@@ -19,7 +19,7 @@ export default function useBreedList(animal) {
       setBreedList([]);
       setStatus("loading");
       const res = await fetch(
-        `https://pets-v2.dev-apis.com/breeds?animal=${animal}`
+        `http://pets-v2.dev-apis.com/breeds?animal=${animal}`
       );
       const json = await res.json();
       localCache[animal] = json.breeds || [];
@@ -27,5 +27,6 @@ export default function useBreedList(animal) {
       setStatus("loaded");
     }
   }, [animal]);
+
   return [breedList, status];
 }
